@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#div{
+				height: 100vh;
+				display: flex;
+				justify-content:center;
+				align-items: center;
+			}
+			#form{
+				margin: 0 auto;
+				width: 40%;
+				height: 40%;
+				display: flex;
+				flex-direction: column;
+				justify-content:center;
+				align-items:center;;
+				padding: 2% 0%;
+				gap:calc(40vh * 0.04);
+			}
+			#math{
+				height:10%;
+				width:20%;
+				font-size: 15%;
+				line-height:10%;
+			}
+			#reset{
+				height:10%;
+				width:20%;
+				font-size: 15%;
+				line-height:10%;
+			}
+			#height{
+				width: 70%;
+				height: 15%;
+			}
+			#weight{
+				width: 70%;
+				height: 15%;
+			}
+			#output{
+				height:30%;
+				display:flex;
+				align-items: center;
+				font-size:3vh;
+				width:50%;
+				justify-content: center;
+			}
+			.border{
+				border: 2px solid black;
+				border-radius: 15px;
+				box-shadow: 0 0 8px 8px rgba(0,170,255,0.12);
+				outline: none;
+			}
+			*{
+				box-sizing: border-box;
+			}
+			#reset:hover{
+				background-color: green;
+				width:23%;
+				height: 13%;
+			}
+			#math:hover{
+				background-color: green;
+				width:23%;
+				height: 13%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<form id="form" class="border">
+				<input type="password" id="height" placeholder="请输入身高（米）" class="border">
+				<input type="password" id="weight" placeholder="请输入体重（公斤）" class="border">
+				<button id="math" type="button" class="border"><span>计算bmi</span></button>
+				<button id="reset" type="reset" class="border"><span>重置</span></button>
+				<output id="output" class="border">bmi</output>
+			</form>
+		</div>
+		<script>
+			let output=document.getElementById("output");
+			let math=document.getElementById("math");
+			math.addEventListener("click",function(){
+				let a=(document.getElementById("height").value);
+				let b=(document.getElementById("weight").value);
+				let weight=Number(b);let height=Number(a);
+				if(a<=""||b<=""||isNaN(a)||isNaN(b)){
+					alert("输入不合法")
+					return 0;
+				}
+				let bmi=weight / (height * height);
+				let res=Number(bmi.toFixed(2));
+				if(res<18.5){
+					show="偏瘦";
+					output.style.backgroundColor="blue";
+				}else if(18.5<=res&&res<=23.9){
+					show="正常";
+					output.style.backgroundColor="green";
+				}else if(res>=24&&res<=27.9){
+					show="超重";
+					output.style.backgroundColor="orange";
+				}else{
+					show="肥胖";
+					output.style.backgroundColor="red";
+				}
+				output.innerText=show;
+			})
+			let reset=document.getElementById("reset")
+			reset.addEventListener("click",function(){
+				output.innerHTML="";
+			})
+		</script>
+	</body>
+</html>
