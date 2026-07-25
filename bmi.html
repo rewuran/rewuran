@@ -94,16 +94,16 @@
 				let bmi=weight / (height * height);
 				let res=Number(bmi.toFixed(2));
 				if(res<18.5){
-					show="偏瘦 bmi: " res;
+					show="偏瘦 bmi: " + res;
 					output.style.backgroundColor="blue";
 				}else if(18.5<=res&&res<=23.9){
-					show="正常 bmi:" res;
+					show="正常 bmi:" + res;
 					output.style.backgroundColor="green";
 				}else if(res>=24&&res<=27.9){
-					show="超重 bmi:" res;
+					show="超重 bmi:" + res;
 					output.style.backgroundColor="orange";
 				}else{
-					show="肥胖 bmi:" res;
+					show="肥胖 bmi:" + res;
 					output.style.backgroundColor="red";
 				}
 				output.innerText=show;
