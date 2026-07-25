@@ -9,6 +9,7 @@
 				display: flex;
 				justify-content:center;
 				align-items: center;
+				flex-grow:1;
 			}
 			#form{
 				margin: 0 auto;
@@ -68,6 +69,14 @@
 				width:23%;
 				height: 13%;
 			}
+			#i{
+				font-size:30px;
+				color:black;
+				flex-grow:1;
+			}
+			body{
+				display:flex;
+			}
 		</style>
 	</head>
 	<body>
@@ -79,6 +88,13 @@
 				<button id="reset" type="reset" class="border"><span>重置</span></button>
 				<output id="output" class="border">bmi</output>
 			</form>
+		</div>
+		<div id="i">
+			bmi:
+			偏瘦：<18.5;
+			正常：18.5~23.9；
+			超重：24~27.9；
+			肥胖：>27.9;
 		</div>
 		<script>
 			let output=document.getElementById("output");
@@ -94,16 +110,16 @@
 				let bmi=weight / (height * height);
 				let res=Number(bmi.toFixed(2));
 				if(res<18.5){
-					show="偏瘦 bmi: " + res;
+					show="bmi: " + res;
 					output.style.backgroundColor="blue";
 				}else if(18.5<=res&&res<=23.9){
-					show="正常 bmi:" + res;
+					show="bmi:" + res;
 					output.style.backgroundColor="green";
 				}else if(res>=24&&res<=27.9){
-					show="超重 bmi:" + res;
+					show="bmi:" + res;
 					output.style.backgroundColor="orange";
 				}else{
-					show="肥胖 bmi:" + res;
+					show="bmi:" + res;
 					output.style.backgroundColor="red";
 				}
 				output.innerText=show;
